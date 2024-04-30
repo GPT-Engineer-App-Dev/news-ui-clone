@@ -1,15 +1,48 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import { Box, Flex, Text, Heading, VStack, Link } from "@chakra-ui/react";
+import { FaUser, FaComments } from "react-icons/fa";
+
+const newsItems = [
+  {
+    id: 1,
+    title: "Introducing the Next Generation of AI",
+    author: "Jane Doe",
+    comments: 15
+  },
+  {
+    id: 2,
+    title: "Exploring the Depths of the Mariana Trench",
+    author: "John Smith",
+    comments: 8
+  },
+  {
+    id: 3,
+    title: "The Future of Renewable Energy",
+    author: "Alice Johnson",
+    comments: 22
+  }
+];
 
 const Index = () => {
-  // TODO: Create the website here!
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box p={5}>
+      <Heading mb={4}>Hacker News Clone</Heading>
+      <VStack spacing={4} align="stretch">
+        {newsItems.map(item => (
+          <Box key={item.id} p={5} shadow="md" borderWidth="1px">
+            <Heading fontSize="xl">
+              <Link color="teal.500" href="#">{item.title}</Link>
+            </Heading>
+            <Text mt={2}>
+              <FaUser /> {item.author}
+            </Text>
+            <Text mt={1}>
+              <FaComments /> {item.comments} Comments
+            </Text>
+          </Box>
+        ))}
+      </VStack>
+    </Box>
+  );
 };
 
 export default Index;
